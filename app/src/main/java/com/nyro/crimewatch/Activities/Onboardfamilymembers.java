@@ -179,17 +179,43 @@ public class Onboardfamilymembers extends AppCompatActivity {
         pDialog.show();
 
         HashMap<String, String> params = new HashMap<String, String>();
-
-        params.put("aparam","");
-        params.put("aparam","");
-        params.put("aparam", "");
+/*
+*
+https://truecrime.herokuapp.com/createUser
+{
+"name": "sdsds",
+"phone":"0543250631",
+"nameone": "asasa",
+"phoneone": "asasa",
+"nametwo": "asasa",
+"phonetwo": "asasa",
+"namethree": "asasa",
+"phonethree": "asasa",
+"namefour": "asasa",
+"phonefour": "asasa"
+}
+*
+*
+*
+*
+* */
+        params.put("name",namefield.getText().toString());
+        params.put("phone",phonenumberfield.getText().toString());
+        params.put("nameone", keenOneName.getText().toString());
+        params.put("phoneone", keenOnePhone.getText().toString());
+        params.put("nametwo", keenTwoName.getText().toString());
+        params.put("phonetwo",keenTwoPhone.getText().toString() );
+        params.put("namethree", keenThreeName.getText().toString());
+        params.put("phonethree", keenThreePhone.getText().toString());
+        params.put("namefour", keenFourName.getText().toString());
+        params.put("phonefour", keenFourPhone.getText().toString());
 
         // Message.messageShort(MyApplication.getAppContext(), params.toString());
 
         volleySingleton= VolleySingleton.getsInstance();
         requestQueue=VolleySingleton.getRequestQueue();
         JsonObjectRequest request = new JsonObjectRequest(
-                Request.Method.POST,"SomeURL",new JSONObject(params), new Response.Listener<JSONObject>() {
+                Request.Method.POST,"https://truecrime.herokuapp.com/createUser",new JSONObject(params), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
 
@@ -236,7 +262,7 @@ public class Onboardfamilymembers extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<String, String>();
                 headers.put("Content-Type", "application/json; charset=utf-8");
-                headers.put("User-agent", "Ozinbo");
+             //   headers.put("User-agent", "Ozinbo");
                 return headers;
             }
         };
